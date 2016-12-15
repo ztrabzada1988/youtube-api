@@ -27,14 +27,14 @@ $(document).ready(function() {
     $.getJSON(url, params, function(data){
 
       for (var i = 0; i <= data.items.length; i++) {
-      var responseData = data.items;
-      // variables for video link (video id) and thumbnails url
-      var videoLink = responseData[i].id.videoId;
-      var thumbnailsUrl = responseData[i].snippet.thumbnails.medium.url;
+        var responseData = data.items[i];
+        // variables for video link (video id) and thumbnails url
+        var thumbnailsUrl = responseData.snippet.thumbnails.medium.url;
+        var videoLink = responseData.id.videoId;
 
-      showResults(videoLink, thumbnailsUrl);
-      }
-    });
+        showResults(videoLink, thumbnailsUrl);
+        }
+      });
   }
 
   // define showResults function the inserts searchItem result into search-results div
