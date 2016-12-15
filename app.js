@@ -27,16 +27,19 @@ $(document).ready(function() {
     $.getJSON(url, params, function(data){
 
       for (var i = 0; i <= data.items.length; i++) {
-      var responseData = data.items[i].snippet.thumbnails.medium.url;
-      console.log(responseData);
-      showResults(responseData);
-    }
+      var responseData = data.items;
+      // variables for video link (video id) and thumbnails url
+      var videoLink = responseData[i].id.videoId;
+      var thumbnailsUrl = responseData[i].snippet.thumbnails.medium.url;
+
+      showResults(videoLink, thumbnailsUrl);
+      }
     });
   }
 
   // define showResults function the inserts searchItem result into search-results div
-  function showResults(responseData){
-  var result = "<img src=" + responseData + ">";
+  function showResults(videoLink, thumbnailsUrl){
+  var result = '<a href=' + videoLink + '>' + '<img src=' + thumbnailsUrl + '></a>';
     // append the information into search-results div.
   $('#search-results').append(result);
   }
