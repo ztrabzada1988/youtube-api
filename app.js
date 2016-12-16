@@ -25,7 +25,6 @@ $(document).ready(function() {
     url = 'https://www.googleapis.com/youtube/v3/search';
     // request to get results as JSON from server
     $.getJSON(url, params, function(data){
-      console.log(data);
       for (var i = 0; i <= data.items.length; i++) {
         var responseData = data.items[i];
         // variables for video link (video id) and thumbnails url
